@@ -23,13 +23,35 @@ const filterParams = {
 };
 
 // Remove empty filter parameters
-const filteredParams = Object.entries(filterParams) // Object Entries Method 
-  .filter(([key, value]) => value !== "") // Filter Method
-  .map(([key, value]) => `${key}=${value}`) // Map Method
-  .join("&"); // Join Method
+const filteredParams = Object.entries(filterParams)
+  .filter(([key, value]) => value !== "")
+  .map(([key, value]) => `${key}=${value}`)
+  .join("&");
 
 // Construct the final URL
 const url = `http://localhost:5000/filteredproducts?${filteredParams}`;
 
+//FilteredParams Flow:
 
+//(1)After applying Object.entries
+// [
+//   ["fabrics", "cotton"],
+//   ["colors", ""],
+//   ["brands", "Nike"],
+//   ["sizes", "L"],
+//   ["pricerange", "10-50"],
+// ];
 
+// (2) After applying .filter()
+// [
+//   ["fabrics", "cotton"],
+//   ["brands", "Nike"],
+//   ["sizes", "L"],
+//   ["pricerange", "10-50"],
+// ];
+
+// (3) After applying .map()
+// ["fabrics=cotton", "brands=Nike", "sizes=L", "pricerange=10-50"];
+
+//  (4) After applying .join()
+//"fabrics=cotton&brands=Nike&sizes=L&pricerange=10-50"
